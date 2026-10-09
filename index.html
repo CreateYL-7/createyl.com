@@ -1,1187 +1,449 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CreateYL | Luxury Restaurant Social Media</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CreateYL | Social Media for Food Businesses</title>
+<meta name="description" content="Your food is already loved in person. CreateYL builds the content system that gets it seen online. Book a free 30-minute growth call.">
+<link rel="canonical" href="https://www.createyl.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.createyl.com/">
+<meta property="og:title" content="CreateYL | Social Media for Food Businesses">
+<meta property="og:description" content="Your food is already loved in person. Let's get it seen online.">
+<meta property="og:image" content="https://www.createyl.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#000000">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Jost:wght@400;500&display=swap">
+<style>
+/* Layout: cinematic dark single page. Hero over a warm restaurant photo, proof right under it, one sand accent. Brand: createyl-brand-kit. */
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --mist: #f1f1f1;
+  --taupe: #635849;
+  --sand: #cbaf87;
+  --teal: #004f4f;
+  --surface: #0c0b0a;
+  --raise: #151311;
+  --muted: #a99e8f;
+  --line: rgba(203, 175, 135, .22);
+  --title: "Bauer Bodoni", "Bodoni Moda", "Bodoni 72", Didot, "Times New Roman", serif;
+  --heading: "Bebas Neue", "Oswald", Impact, "Arial Narrow", sans-serif;
+  --body: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
+  --book: "https://calendly.com/dfernandez-createyl/discovery-call";
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { margin: 0; }
+body { background: var(--black); color: var(--mist); font: 400 1.0625rem/1.65 var(--body); -webkit-font-smoothing: antialiased; }
+body::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 90; opacity: .06; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+::selection { background: var(--sand); color: var(--black); }
+:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
 
-    :root {
-      --blk: #080808;
-      --wht: #ffffff;
-      --off: #f0ede8;
-      --cream: #f7f4ef;
-      --off2: #e8e3db;
-      --stone: #635849;
-      --stone-lt: #8a7a6a;
-      --gold: #cbaf87;
-      --teal: #004f4f;
-      --teal-lt: #006b6b;
-    }
+.wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding-inline: 20px; }
+.narrow { max-width: 780px; }
+section { padding-block: 96px; }
+.eyebrow { font: 400 1rem/1.1 var(--heading); letter-spacing: .18em; text-transform: uppercase; color: var(--sand); margin: 0 0 18px; display: flex; align-items: center; gap: 12px; }
+.eyebrow::after { content: ""; height: 1px; width: 48px; background: var(--sand); opacity: .6; }
+h1, h2 { font-family: var(--title); font-weight: 700; line-height: 1.02; letter-spacing: -0.015em; text-wrap: balance; margin: 0; color: var(--white); }
+h1 { font-size: clamp(2.7rem, 8vw, 5.4rem); }
+h2 { font-size: clamp(2rem, 5.4vw, 3.3rem); }
+h1 em, h2 em { font-style: italic; font-weight: 400; color: var(--sand); }
+p { margin: 0; }
+.lede { font-size: clamp(1.1rem, 2.4vw, 1.3rem); color: var(--mist); opacity: .86; max-width: 56ch; }
+.muted { color: var(--muted); }
 
-    html {
-      scroll-behavior: smooth;
-    }
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; background: var(--sand); color: var(--black); text-decoration: none; font: 400 1.4rem/1 var(--heading); letter-spacing: .1em; padding: 19px 32px; border-radius: 2px; border: 0; cursor: pointer; transition: background .2s ease, transform .2s ease; }
+.btn:hover { background: var(--white); transform: translateY(-2px); }
+.btn.ghost { background: transparent; color: var(--mist); border: 1px solid var(--line); }
+.btn.ghost:hover { border-color: var(--sand); background: transparent; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.micro { font: 400 .95rem/1.3 var(--heading); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 400;
-      color: var(--blk);
-      background: var(--wht);
-      overflow-x: hidden;
-    }
+/* Nav */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding-top: env(safe-area-inset-top, 0px); transition: background .3s ease, border-color .3s ease; border-bottom: 1px solid transparent; }
+.nav.solid { background: rgba(0,0,0,.86); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
+.nav img { height: 40px; width: auto; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a:not(.btn) { font: 400 1.05rem/1 var(--heading); letter-spacing: .14em; text-decoration: none; color: var(--mist); opacity: .8; }
+.nav-links a:not(.btn):hover { opacity: 1; color: var(--sand); }
+.nav .btn { font-size: 1.05rem; padding: 12px 18px; }
 
-    p, h1, h2, h3, h4, li, div {
-      text-wrap: pretty;
-    }
+/* Hero */
+.hero { position: relative; min-height: min(100svh, 920px); display: grid; align-items: end; padding-block: 140px 72px; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background: url("assets/hero.jpg") center 40% / cover no-repeat; transform: scale(1.04); }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.35) 35%, rgba(0,0,0,.92) 85%, #000 100%), radial-gradient(80% 60% at 20% 90%, rgba(203,175,135,.16), transparent 70%); }
+.hero .wrap { position: relative; z-index: 1; display: grid; gap: 26px; }
+.hero h1 { max-width: 14ch; }
 
-    /* ─── FADE IN ─────────────────────────────────── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.75s ease, transform 0.75s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .fade-in.delay-1 { transition-delay: 0.12s; }
-    .fade-in.delay-2 { transition-delay: 0.24s; }
-    .fade-in.delay-3 { transition-delay: 0.36s; }
-    .fade-in.delay-4 { transition-delay: 0.48s; }
-    .fade-in.delay-5 { transition-delay: 0.60s; }
+/* Proof strip */
+.strip { border-top: 1px solid var(--sand); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); }
+.strip > div { padding: 26px 18px 24px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.strip > div + div { border-left: 1px solid var(--line); }
+.strip b { font: 400 clamp(2.3rem, 5vw, 3.4rem)/.95 var(--heading); color: var(--white); letter-spacing: .02em; overflow-wrap: anywhere; }
+.strip span { color: var(--muted); font-size: .95rem; line-height: 1.4; }
+.strip-note { margin-top: 14px; font: 400 .95rem/1.3 var(--heading); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 
-    /* ─── NAV ─────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: var(--blk);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 52px;
-      height: 72px;
-      transition: background 0.35s ease, backdrop-filter 0.35s ease;
-    }
-    nav.scrolled {
-      background: rgba(8, 8, 8, 0.95);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-    .nav-logo img {
-      height: 44px;
-      width: auto;
-      display: block;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      color: rgba(255, 255, 255, 0.72);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    .nav-links a:hover {
-      color: var(--gold);
-    }
-    .nav-cta {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid var(--gold);
-      padding: 10px 22px;
-      text-decoration: none;
-      transition: background 0.2s ease, color 0.2s ease;
-      white-space: nowrap;
-    }
-    .nav-cta:hover {
-      background: var(--gold);
-      color: var(--blk);
-    }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-    }
-    .hamburger span {
-      display: block;
-      width: 22px;
-      height: 1.5px;
-      background: rgba(255, 255, 255, 0.8);
-      transition: all 0.3s ease;
-    }
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 72px;
-      left: 0;
-      right: 0;
-      background: rgba(8, 8, 8, 0.97);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 28px 32px 36px;
-      z-index: 99;
-      flex-direction: column;
-      gap: 22px;
-    }
-    .mobile-menu.open {
-      display: flex;
-    }
-    .mobile-menu a {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.75);
-      text-decoration: none;
-    }
-    .mobile-menu .mobile-cta {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid var(--gold);
-      padding: 12px 22px;
-      text-align: center;
-      margin-top: 6px;
-    }
+/* Problem */
+.pains { list-style: none; margin: 36px 0 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.pains li { padding: 20px 0 20px 44px; border-bottom: 1px solid var(--line); position: relative; font-size: clamp(1.1rem, 2.4vw, 1.3rem); color: var(--white); }
+.pains li::before { content: ""; position: absolute; left: 4px; top: 50%; width: 22px; height: 1px; background: var(--sand); }
+.turn { margin-top: 32px; font: italic 400 clamp(1.4rem, 3.4vw, 1.9rem)/1.3 var(--title); color: var(--sand); }
 
-    /* ─── HERO ────────────────────────────────────── */
-    .hero {
-      background: var(--blk);
-      padding: 120px 52px 80px;
-      display: grid;
-      grid-template-columns: 55fr 45fr;
-      gap: 88px;
-      align-items: center;
-      min-height: 100vh;
-      overflow: hidden;
-    }
-    .hero-eyebrow {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 26px;
-    }
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(42px, 5.2vw, 68px);
-      line-height: 1.07;
-      color: var(--wht);
-      margin-bottom: 28px;
-    }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--gold);
-    }
-    .hero-sub {
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.72;
-      color: rgba(255, 255, 255, 0.5);
-      max-width: 430px;
-      margin-bottom: 42px;
-    }
-    .hero-ctas {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      display: inline-block;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--wht);
-      background: var(--teal);
-      padding: 15px 28px;
-      text-decoration: none;
-      border: 1px solid var(--teal);
-      transition: background 0.2s ease, border-color 0.2s ease;
-    }
-    .btn-primary:hover {
-      background: var(--teal-lt);
-      border-color: var(--teal-lt);
-    }
-    .btn-text {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.55);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-      padding-bottom: 3px;
-      transition: color 0.2s ease, border-color 0.2s ease;
-    }
-    .btn-text:hover {
-      color: var(--gold);
-      border-color: var(--gold);
-    }
-    .hero-images {
-      display: grid;
-      grid-template-rows: 260px 155px;
-      gap: 8px;
-    }
-    .hero-img-top {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .hero-img-bottom {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    .hero-img-bottom img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+/* Split image sections */
+.split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 56px; align-items: center; }
+.photo { border-radius: 3px; overflow: hidden; border: 1px solid var(--line); aspect-ratio: 4/5; }
+.photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.9) contrast(1.05); }
 
-    /* ─── STATS BAR ───────────────────────────────── */
-    .stats-bar {
-      background: var(--cream);
-      border-bottom: 3px solid var(--gold);
-      padding: 68px 52px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
-    .stat-item {
-      text-align: center;
-    }
-    .stat-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: 52px;
-      color: var(--blk);
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-    .stat-label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--stone);
-      letter-spacing: 0.02em;
-    }
+.helps { display: grid; gap: 26px; margin-top: 36px; }
+.help { display: grid; grid-template-columns: 54px minmax(0,1fr); gap: 4px 16px; }
+.help i { font: italic 400 2.4rem/1 var(--title); color: var(--sand); grid-row: span 2; }
+.help b { font: 400 1.6rem/1.05 var(--heading); letter-spacing: .05em; color: var(--white); }
+.help span { color: var(--muted); }
 
-    /* ─── VENUE STRIP ─────────────────────────────── */
-    .venue-strip {
-      background: var(--wht);
-      border-bottom: 1px solid var(--off2);
-      padding: 52px;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 24px;
-    }
-    .venue-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-    }
-    .venue-img {
-      width: 90px;
-      height: 90px;
-      object-fit: cover;
-      object-position: center center;
-      display: block;
-    }
-    .venue-label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--stone);
-      text-align: center;
-      line-height: 1.4;
-    }
+/* Offer */
+.engine { background: radial-gradient(90% 70% at 85% 0%, rgba(0,79,79,.55), transparent 70%), var(--surface); border-block: 1px solid var(--line); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px; margin-top: 44px; }
+.step { border-top: 1px solid var(--sand); padding-top: 16px; display: grid; gap: 8px; align-content: start; }
+.step small { font: 400 .95rem/1 var(--heading); letter-spacing: .16em; color: var(--sand); }
+.step b { font: 400 2rem/1 var(--heading); letter-spacing: .05em; color: var(--white); }
+.step span { color: var(--muted); }
+.decide { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px 24px; align-items: center; }
+.decide p { font-size: 1.1rem; color: var(--white); }
 
-    /* ─── WHO WE SERVE ────────────────────────────── */
-    .who-we-serve {
-      background: var(--off);
-      padding: 100px 52px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 88px;
-      align-items: start;
-    }
-    .section-eyebrow {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-    .section-h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(30px, 3.2vw, 44px);
-      line-height: 1.15;
-      color: var(--blk);
-      margin-bottom: 24px;
-    }
-    .body-text {
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.78;
-      color: var(--stone);
-      margin-bottom: 20px;
-    }
-    .body-text:last-of-type {
-      margin-bottom: 32px;
-    }
-    .tags-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .tag {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--stone);
-      border: 1px solid var(--off2);
-      background: rgba(255, 255, 255, 0.7);
-      padding: 6px 14px;
-      cursor: default;
-      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-    }
-    .tag:hover {
-      background: var(--gold);
-      color: var(--blk);
-      border-color: var(--gold);
-    }
-    .serve-list {
-      list-style: none;
-    }
-    .serve-list li {
-      border-top: 1px solid var(--off2);
-      padding: 28px 0;
-    }
-    .serve-list li:last-child {
-      border-bottom: 1px solid var(--off2);
-    }
-    .serve-heading {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 22px;
-      color: var(--blk);
-      margin-bottom: 9px;
-      line-height: 1.2;
-    }
-    .serve-body {
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.68;
-      color: var(--stone);
-    }
+/* Results */
+.videos { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 44px; }
+.video { display: grid; gap: 12px; margin: 0; min-width: 0; }
+.frame { position: relative; width: 100%; background: var(--surface); border-radius: 3px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 30px 80px -30px rgba(203,175,135,.25); }
+.frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #000; }
+.poster { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; cursor: pointer; background: linear-gradient(160deg, var(--raise), var(--black)); display: grid; place-items: center; }
+.poster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.8); transition: filter .3s ease; }
+.poster:hover img { filter: brightness(1); }
+.play { position: relative; width: 78px; height: 78px; border-radius: 50%; border: 1px solid var(--sand); background: rgba(0,0,0,.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: grid; place-items: center; transition: transform .2s ease; }
+.play::after { content: ""; margin-left: 6px; border-style: solid; border-width: 13px 0 13px 21px; border-color: transparent transparent transparent var(--sand); }
+.poster:hover .play { transform: scale(1.06); }
+.video figcaption { font: 400 1.15rem/1 var(--heading); letter-spacing: .1em; color: var(--white); }
+.video figcaption span { color: var(--muted); font: 400 .95rem var(--body); letter-spacing: 0; margin-left: 8px; }
+.fallback { font-size: .85rem; color: var(--muted); }
 
-    /* ─── THE OFFER ───────────────────────────────── */
-    .offer {
-      background: var(--blk);
-      padding: 100px 52px;
-    }
-    .offer-top {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      margin-bottom: 72px;
-    }
-    .offer-left .section-eyebrow {
-      color: var(--gold);
-    }
-    .offer-h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(34px, 3.8vw, 52px);
-      line-height: 1.12;
-      color: var(--wht);
-    }
-    .offer-pull-quote {
-      border-left: 3px solid var(--gold);
-      padding-left: 28px;
-    }
-    .offer-pull-quote p {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(18px, 2.1vw, 26px);
-      line-height: 1.55;
-      color: rgba(255, 255, 255, 0.82);
-    }
-    .offer-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-    .offer-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      padding: 40px 32px 44px;
-    }
-    .offer-card-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-    .offer-card-heading {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 26px;
-      color: var(--wht);
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-    .offer-card-body {
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.72;
-      color: rgba(255, 255, 255, 0.5);
-    }
+.tickets { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 56px; }
+.ticket { background: var(--surface); border: 1px solid var(--line); border-radius: 2px; padding: 20px 22px 22px; display: grid; gap: 14px; align-content: start; position: relative; }
+.ticket::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 6px; background: radial-gradient(circle at 6px -2px, var(--black) 5px, transparent 5.5px) 0 0 / 12px 6px repeat-x; }
+.ticket header { font: 400 .9rem/1.1 var(--heading); letter-spacing: .14em; text-transform: uppercase; color: var(--sand); border-bottom: 1px dashed var(--line); padding-bottom: 12px; display: flex; justify-content: space-between; gap: 10px; }
+.ticket blockquote { margin: 0; font: italic 400 1.3rem/1.4 var(--title); color: var(--white); }
+.ticket footer { font: 400 1rem/1.2 var(--heading); letter-spacing: .1em; color: var(--muted); }
 
-    /* ─── IMAGE BREAK ─────────────────────────────── */
-    .image-break {
-      height: 340px;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-    }
-    .image-panel {
-      position: relative;
-      overflow: hidden;
-    }
-    .image-panel img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .image-panel::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(203, 175, 135, 0.20);
-      pointer-events: none;
-    }
+.sub-h { font: 400 1.5rem/1 var(--heading); letter-spacing: .1em; color: var(--white); margin: 64px 0 18px; }
+.receipts { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; align-items: start; }
+.before-after { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 16px; align-items: center; }
+.shot { margin: 0; display: grid; gap: 8px; min-width: 0; }
+.shot img { width: 100%; border-radius: 3px; border: 1px solid var(--line); background: var(--surface); cursor: zoom-in; transition: border-color .2s ease; }
+.shot img:hover { border-color: var(--sand); }
+.shot figcaption { font-size: .9rem; color: var(--muted); line-height: 1.4; }
+.shot figcaption b { color: var(--white); font-weight: 500; }
+.texts { columns: 3 260px; column-gap: 16px; }
+.texts img { width: 100%; border-radius: 3px; border: 1px solid var(--line); margin-bottom: 16px; break-inside: avoid; cursor: zoom-in; }
 
-    /* ─── HOW IT WORKS ────────────────────────────── */
-    .how-it-works {
-      background: var(--wht);
-      padding: 100px 52px;
-    }
-    .how-intro {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      margin-bottom: 68px;
-    }
-    .how-intro-body {
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.78;
-      color: var(--stone);
-      padding-top: 4px;
-    }
-    .steps-list {
-      list-style: none;
-    }
-    .step-item {
-      display: grid;
-      grid-template-columns: 72px 1fr auto;
-      gap: 32px;
-      align-items: center;
-      border-top: 1px solid var(--off2);
-      padding: 28px 0;
-    }
-    .step-item:last-child {
-      border-bottom: 1px solid var(--off2);
-    }
-    .step-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: 56px;
-      color: rgba(0, 0, 0, 0.07);
-      line-height: 1;
-    }
-    .step-heading {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 24px;
-      color: var(--blk);
-      margin-bottom: 12px;
-      line-height: 1.2;
-    }
-    .step-body {
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.72;
-      color: var(--stone);
-    }
-    .step-date {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      white-space: nowrap;
-      padding-top: 8px;
-    }
+/* CTA */
+.cta-box { background: linear-gradient(150deg, var(--teal), #002424); border: 1px solid rgba(203,175,135,.3); border-radius: 4px; padding: clamp(28px, 6vw, 56px); display: grid; gap: 22px; }
+.cta-box ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.cta-box li { padding-left: 30px; position: relative; color: var(--white); }
+.cta-box li::before { content: ""; position: absolute; left: 2px; top: .55em; width: 12px; height: 7px; border-left: 1.5px solid var(--sand); border-bottom: 1.5px solid var(--sand); transform: rotate(-45deg); }
+.ps { margin-top: 48px; border-left: 1px solid var(--sand); padding-left: 20px; display: grid; gap: 10px; max-width: 62ch; }
+.ps strong { font: 400 1.15rem/1 var(--heading); letter-spacing: .1em; color: var(--sand); }
+.ps a { color: var(--sand); }
 
-    /* ─── PROOF ───────────────────────────────────── */
-    .proof {
-      background: var(--cream);
-      padding: 100px 52px 0;
-    }
-    .proof-header {
-      margin-bottom: 52px;
-    }
-    .proof h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(34px, 3.8vw, 52px);
-      line-height: 1.12;
-      color: var(--blk);
-    }
-    .proof-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-bottom: 52px;
-    }
-    .proof-card {
-      background: var(--wht);
-      border-left: 3px solid var(--teal);
-      padding: 36px 32px 40px;
-    }
-    .proof-stat {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: 52px;
-      color: var(--blk);
-      line-height: 1;
-      margin-bottom: 10px;
-    }
-    .proof-label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 18px;
-    }
-    .proof-body {
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.68;
-      color: var(--stone);
-    }
-    .testimonial-block {
-      background: var(--teal);
-      padding: 72px 80px;
-      text-align: center;
-    }
-    .testimonial-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(22px, 2.8vw, 32px);
-      line-height: 1.5;
-      color: rgba(255, 255, 255, 0.9);
-      max-width: 680px;
-      margin: 0 auto 28px;
-    }
-    .testimonial-attribution {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
+footer.site { border-top: 1px solid var(--line); padding-block: 28px calc(28px + env(safe-area-inset-bottom, 0px)); }
+footer.site .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center; font: 400 1rem/1.2 var(--heading); letter-spacing: .14em; color: var(--muted); }
+footer.site img { height: 30px; width: auto; }
+footer.site a { text-decoration: none; }
+footer.site a:hover { color: var(--sand); }
 
-    /* ─── CTA ─────────────────────────────────────── */
-    .cta-section {
-      background: var(--off);
-      border-top: 3px solid var(--gold);
-      padding: 100px 52px;
-      text-align: center;
-    }
-    .cta-eyebrow {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--stone-lt);
-      margin-bottom: 20px;
-    }
-    .cta-section h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(42px, 5.5vw, 64px);
-      line-height: 1.1;
-      color: var(--blk);
-      margin-bottom: 24px;
-    }
-    .cta-section h2 em {
-      font-style: italic;
-      color: var(--teal);
-    }
-    .cta-sub {
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.72;
-      color: var(--stone);
-      max-width: 480px;
-      margin: 0 auto 40px;
-    }
-    .cta-note {
-      margin-top: 24px;
-      font-size: 13px;
-      font-style: italic;
-      font-weight: 300;
-      color: var(--stone-lt);
-    }
+/* Mobile sticky CTA */
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px)); background: rgba(0,0,0,.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid var(--line); transform: translateY(110%); transition: transform .3s ease; display: none; }
+.sticky-cta.show { transform: translateY(0); }
+.sticky-cta .btn { width: 100%; font-size: 1.25rem; padding: 16px; }
 
-    /* ─── FOOTER ──────────────────────────────────── */
-    footer {
-      background: var(--teal);
-      padding: 40px 52px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    footer img {
-      height: 36px;
-      width: auto;
-      display: block;
-    }
-    .footer-right {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 300;
-      letter-spacing: 0.04em;
-      color: rgba(255, 255, 255, 0.45);
-    }
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,.94); display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) 16px max(16px, env(safe-area-inset-bottom, 0px)); cursor: zoom-out; }
+.lightbox img { max-height: 90vh; width: auto; max-width: 100%; border-radius: 3px; }
 
-    /* ─── RESPONSIVE ──────────────────────────────── */
+/* Reveal */
+.reveal { opacity: 1; transform: none; transition: opacity .8s ease, transform .8s ease; }
+.js .reveal.pending { opacity: 0; transform: translateY(18px); }
 
-    /* Large desktop: trim image grid so it never overflows */
-    @media (max-width: 1200px) {
-      .hero { gap: 64px; }
-      .hero-images { grid-template-rows: 248px 150px; }
-    }
-
-    /* ─── TABLET / IPAD PORTRAIT + LANDSCAPE (≤ 960px) ─── */
-    @media (max-width: 960px) {
-      nav { padding: 0 28px; }
-      .nav-links, .nav-cta { display: none; }
-      .hamburger { display: flex; }
-
-      /* Hero: single column, text first, images below */
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 108px 32px 60px;
-        min-height: auto;
-        gap: 32px;
-        align-items: start;
-      }
-      .hero-sub { max-width: 100%; }
-      .hero-images { grid-template-rows: 236px 145px; }
-
-      /* Stats: keep 3-col on iPad — numbers are readable */
-      .stats-bar { padding: 52px 32px; gap: 20px; }
-      .stat-number { font-size: 44px; }
-
-      /* Venue strip: keep 5-col, reduce gap and padding */
-      .venue-strip { padding: 40px 32px; gap: 14px; }
-      .venue-label { font-size: 10px; letter-spacing: 0.04em; }
-
-      /* Who we serve: stack */
-      .who-we-serve {
-        grid-template-columns: 1fr;
-        padding: 72px 32px;
-        gap: 48px;
-      }
-
-      /* Offer: stack */
-      .offer { padding: 72px 32px; }
-      .offer-top { grid-template-columns: 1fr; gap: 36px; margin-bottom: 44px; }
-      .offer-cards { grid-template-columns: 1fr; }
-
-      /* Image break: stack panels vertically */
-      .image-break { grid-template-columns: 1fr; height: auto; }
-      .image-panel { height: 220px; }
-
-      /* How it works: stack intro, simplify step grid */
-      .how-it-works { padding: 72px 32px; }
-      .how-intro { grid-template-columns: 1fr; gap: 20px; margin-bottom: 44px; }
-      .step-item { grid-template-columns: 52px 1fr; grid-template-rows: auto auto; }
-      .step-date { grid-column: 2; padding-top: 0; margin-top: 10px; }
-
-      /* Proof: stack cards */
-      .proof { padding: 72px 32px 0; }
-      .proof-cards { grid-template-columns: 1fr; gap: 14px; }
-      .testimonial-block { padding: 56px 32px; }
-
-      .cta-section { padding: 72px 32px; }
-
-      footer { padding: 32px 32px; flex-direction: column; gap: 16px; text-align: center; }
-    }
-
-    /* ─── MOBILE LARGE / SMALL TABLET (≤ 680px) ─── */
-    @media (max-width: 680px) {
-      .hero { padding: 96px 24px 52px; gap: 28px; }
-      .hero h1 { font-size: clamp(32px, 9vw, 46px); }
-      .hero-images { grid-template-rows: 210px 128px; }
-      .hero-ctas { gap: 18px; }
-
-      .stats-bar { padding: 44px 24px; gap: 32px; }
-      .stat-number { font-size: 42px; }
-
-      /* Venue strip: 3-col on large phones */
-      .venue-strip { grid-template-columns: repeat(3, 1fr); padding: 36px 24px; gap: 16px; }
-
-      .who-we-serve { padding: 60px 24px; gap: 40px; }
-      .offer { padding: 60px 24px; }
-      .image-panel { height: 180px; }
-      .how-it-works { padding: 60px 24px; }
-      .proof { padding: 60px 24px 0; }
-      .testimonial-block { padding: 48px 24px; }
-      .cta-section { padding: 60px 24px; }
-      footer { padding: 28px 24px; }
-    }
-
-    /* ─── MOBILE SMALL (≤ 480px) ─── */
-    @media (max-width: 480px) {
-      .hero { padding: 88px 20px 48px; gap: 24px; }
-      .hero h1 { font-size: 32px; line-height: 1.1; }
-      .hero-sub { font-size: 13px; margin-bottom: 28px; }
-      .hero-ctas { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .btn-primary { width: 100%; text-align: center; }
-
-      /* Show only the top hero image on small phones */
-      .hero-images { grid-template-rows: 200px; }
-      .hero-img-bottom { display: none; }
-
-      /* Stats: stack to single column */
-      .stats-bar { grid-template-columns: 1fr; padding: 40px 20px; gap: 0; }
-      .stat-item { padding: 28px 0; border-bottom: 1px solid var(--off2); }
-      .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
-      .stat-number { font-size: 48px; }
-
-      /* Venue strip: 2-col grid */
-      .venue-strip { grid-template-columns: repeat(2, 1fr); padding: 32px 20px; gap: 20px; }
-      .venue-strip .venue-item:last-child { grid-column: span 2; }
-
-      /* Who we serve */
-      .who-we-serve { padding: 52px 20px; }
-      .section-h2 { font-size: 28px; }
-      .serve-heading { font-size: 20px; }
-
-      /* Offer */
-      .offer { padding: 52px 20px; }
-      .offer-h2 { font-size: 28px; }
-      .offer-pull-quote p { font-size: 18px; }
-      .offer-card { padding: 28px 22px 32px; }
-      .offer-card-heading { font-size: 22px; }
-
-      /* Image break: hide on small phones — keeps the page clean */
-      .image-break { display: none; }
-
-      /* How it works */
-      .how-it-works { padding: 52px 20px; }
-      .how-intro { margin-bottom: 32px; }
-      .step-item { gap: 16px; padding: 28px 0; }
-      .step-num { font-size: 34px; }
-      .step-heading { font-size: 20px; }
-
-      /* Proof */
-      .proof { padding: 52px 20px 0; }
-      .proof-card { padding: 28px 22px 32px; }
-      .proof-stat { font-size: 44px; }
-      .testimonial-block { padding: 44px 20px; }
-      .testimonial-quote { font-size: 20px; }
-
-      /* CTA */
-      .cta-section { padding: 52px 20px; }
-      .cta-section h2 { font-size: 36px; }
-      .cta-sub { font-size: 14px; }
-
-      footer { padding: 28px 20px; }
-      footer .footer-right { font-size: 11px; }
-    }
-  </style>
+@media (max-width: 900px) {
+  .strip { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .strip > div:nth-child(3) { border-left: 0; }
+  .strip > div:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .split { grid-template-columns: 1fr; gap: 36px; }
+  .photo { aspect-ratio: 16/10; }
+  .receipts { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .tickets { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  section { padding-block: 72px; }
+  .nav-links a:not(.btn) { display: none; }
+  .nav img { height: 34px; }
+  .hero { padding-block: 120px 56px; }
+  .steps { grid-template-columns: 1fr; }
+  .videos { grid-template-columns: 1fr; }
+  .videos .tall { max-width: 340px; width: 100%; justify-self: center; }
+  .before-after { grid-template-columns: 1fr; }
+  .btn-row .btn { width: 100%; }
+  .sticky-cta { display: block; }
+  body { padding-bottom: 84px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn, .poster img, .play, .reveal { transition: none; }
+  .js .reveal.pending { opacity: 1; transform: none; }
+}
+</style>
 </head>
 <body>
 
-  <!-- ─────────────────────────────── NAV -->
-  <nav id="main-nav">
-    <a href="#hero" class="nav-logo">
-      <img src="CreateYL New Logo (Transparent).png" alt="CreateYL">
-    </a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#how-it-works">How It Works</a></li>
-      <li><a href="#results">Results</a></li>
-    </ul>
-    <a href="https://calendly.com/dfernandez-createyl/discovery-call" class="nav-cta" target="_blank" rel="noopener">Book a Call</a>
-    <button class="hamburger" id="hamburger" aria-label="Open menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </nav>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" aria-label="CreateYL home"><img src="assets/logo.png" alt="CreateYL" width="250" height="104"></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#results">Results</a>
+      <a href="#how">How it works</a>
+      <a class="btn book" href="https://calendly.com/dfernandez-createyl/discovery-call" target="_blank" rel="noopener">Book a call</a>
+    </nav>
+  </div>
+</header>
 
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="#about" class="mobile-link">About</a>
-    <a href="#how-it-works" class="mobile-link">How It Works</a>
-    <a href="#results" class="mobile-link">Results</a>
-    <a href="https://calendly.com/dfernandez-createyl/discovery-call" class="mobile-cta" target="_blank" rel="noopener">Book a Call</a>
+<main id="top">
+
+  <!-- HEADLINE COMPLEX -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow">Social media for food businesses</p>
+      <h1>Your food is already loved in person. <em>Let's get it seen online.</em></h1>
+      <p class="lede">CreateYL builds a content system around your business, so the people who should be your regulars actually find you. We do it with you, step by step, in 90 days.</p>
+      <div class="btn-row">
+        <a class="btn book" href="https://calendly.com/dfernandez-createyl/discovery-call" target="_blank" rel="noopener">Book a free growth call</a>
+        <a class="btn ghost" href="#results">See the results</a>
+      </div>
+      <p class="micro">30 minutes. We audit your page before we talk.</p>
+    </div>
+  </section>
+
+  <!-- PROOF FIRST -->
+  <div class="wrap">
+    <div class="strip reveal">
+      <div><b>3,285 → 11.7K</b><span>Instagram followers for a fertility clinic in New York</span></div>
+      <div><b>1,066</b><span>new followers for a deli since June</span></div>
+      <div><b>10M</b><span>views on a single client reel</span></div>
+      <div><b>25.2K</b><span>people follow @createyl, built with the same system</span></div>
+    </div>
+    <p class="strip-note">Real numbers from real accounts. Screenshots below.</p>
   </div>
 
-  <!-- ─────────────────────────────── HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-left">
-      <p class="hero-eyebrow fade-in">Luxury Restaurant Social Media</p>
-      <h1 class="fade-in delay-1">Your restaurant is world class <em>in person.</em> We make sure the world <span style="white-space:nowrap">sees it.</span></h1>
-      <p class="hero-sub fade-in delay-2">Foundation first. System driven. Built for premium restaurants, cafes, and bars that want real organic visibility. Not random posts.</p>
-      <div class="hero-ctas fade-in delay-3">
-        <a href="https://calendly.com/dfernandez-createyl/discovery-call" class="btn-primary" target="_blank" rel="noopener">Apply for the 90 Day Growth System</a>
-        <a href="#results" class="btn-text">See Results</a>
-      </div>
+  <!-- FLOODLIGHT THE PROBLEM -->
+  <section>
+    <div class="wrap narrow reveal">
+      <p class="eyebrow">Sound familiar?</p>
+      <h2>You built something people love. <em>Online, it's still a secret.</em></h2>
+      <ul class="pains">
+        <li>You've been open for years and people nearby still don't know you exist.</li>
+        <li>You post, the views come in, and nothing changes at the register.</li>
+        <li>You're running the place. Planning, editing, and posting never get done.</li>
+        <li>You tried an agency or a freelancer. You got pretty posts and no plan.</li>
+      </ul>
+      <p class="turn">It's not your food. It's the system around it.</p>
     </div>
-    <div class="hero-images fade-in delay-2">
-      <img
-        src="pexels-solliefoto-299348.jpg"
-        alt="Luxury plated dish"
-        class="hero-img-top"
-        style="object-position: 45% 55%;"
-      >
-      <div class="hero-img-bottom">
-        <img
-          src="pexels-travelerchitect-30729159.jpg"
-          alt="Fine dining service"
-          style="object-position: center 30%;"
-        >
-        <img
-          src="pexels-hayriyenur-351892318-19343364.jpg"
-          alt="Restaurant atmosphere"
-          style="object-position: center 35%;"
-        >
+  </section>
+
+  <!-- THE SOLUTION -->
+  <section style="padding-top: 0">
+    <div class="wrap split">
+      <div class="reveal">
+        <p class="eyebrow">What we help with</p>
+        <h2>A content system built around <em>your</em> business.</h2>
+        <div class="helps">
+          <div class="help"><i>1</i><b>Know who you're posting for</b><span>We study your business, your customers, and what already works in your space before anything goes live.</span></div>
+          <div class="help"><i>2</i><b>Know what to film</b><span>You get a simple weekly shot list. Your team films. We turn it into posts built to be found.</span></div>
+          <div class="help"><i>3</i><b>Know what's working</b><span>We track every post, keep what brings followers and saves, and cut what doesn't.</span></div>
+        </div>
+      </div>
+      <div class="photo reveal"><img src="assets/dinner.jpg" alt="A plated dinner and a glass of red wine at a candlelit table" loading="lazy" width="1100" height="1468"></div>
+    </div>
+  </section>
+
+  <!-- THE OFFER -->
+  <section class="engine" id="how">
+    <div class="wrap reveal">
+      <p class="eyebrow">The 90-Day Growth Engine</p>
+      <h2>90 days to find what works for you. <em>Then we scale it.</em></h2>
+      <div class="steps">
+        <div class="step"><small>Step 01</small><b>Research</b><span>Your customers, your competitors, and what makes you impossible to copy.</span></div>
+        <div class="step"><small>Step 02</small><b>Test</b><span>Weekly content, every post tracked, so the numbers show what your people respond to.</span></div>
+        <div class="step"><small>Step 03</small><b>Scale</b><span>We double down on what the data proved and drop what it didn't.</span></div>
+      </div>
+      <div class="decide">
+        <p>No guessing and no long wait to find out. By day 75, you decide if we keep going.</p>
+        <a class="btn book" href="https://calendly.com/dfernandez-createyl/discovery-call" target="_blank" rel="noopener">Book a free growth call</a>
       </div>
     </div>
   </section>
 
-  <!-- ─────────────────────────────── STATS BAR -->
-  <section class="stats-bar">
-    <div class="stat-item fade-in">
-      <div class="stat-number">10M+</div>
-      <div class="stat-label">Organic views in 30 days</div>
-    </div>
-    <div class="stat-item fade-in delay-1">
-      <div class="stat-number">70K+</div>
-      <div class="stat-label">Added views in one sprint</div>
-    </div>
-    <div class="stat-item fade-in delay-2">
-      <div class="stat-number">72%</div>
-      <div class="stat-label">Above baseline in week one</div>
-    </div>
-  </section>
+  <!-- PROOF LOUDER THAN CLAIMS -->
+  <section id="results">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">Results</p>
+        <h2>Don't take our word for it. <em>Take theirs.</em></h2>
+      </div>
 
-  <!-- ─────────────────────────────── VENUE STRIP -->
-  <section class="venue-strip">
-    <div class="venue-item fade-in">
-      <img src="pexels-ansar-muhammad-380085065-27626762.jpg" alt="Premium Restaurants" class="venue-img" style="object-position: center center;">
-      <span class="venue-label">Premium Restaurants</span>
-    </div>
-    <div class="venue-item fade-in delay-1">
-      <img src="pexels-ltfkxx99-35237767.jpg" alt="Luxury Cafes" class="venue-img" style="object-position: center 62%;">
-      <span class="venue-label">Luxury Cafes</span>
-    </div>
-    <div class="venue-item fade-in delay-2">
-      <img src="pexels-burakeroglu3-35495069.jpg" alt="Artisan Bakeries" class="venue-img" style="object-position: center 58%;">
-      <span class="venue-label">Artisan Bakeries</span>
-    </div>
-    <div class="venue-item fade-in delay-3">
-      <img src="pexels-holoshuriken-15750741.jpg" alt="Wine Bars" class="venue-img" style="object-position: center 68%;">
-      <span class="venue-label">Wine Bars</span>
-    </div>
-    <div class="venue-item fade-in delay-4">
-      <img src="pexels-marceloverfe-29570777.jpg" alt="Cocktail Bars" class="venue-img" style="object-position: center 42%;">
-      <span class="venue-label">Cocktail Bars</span>
-    </div>
-  </section>
+      <div class="videos reveal">
+        <figure class="video tall" data-yt="eeeJmhBQVGA">
+          <div class="frame" style="aspect-ratio: 9/16"><button class="poster" aria-label="Play the deli owner's testimonial"><img src="https://i.ytimg.com/vi/eeeJmhBQVGA/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span></button></div>
+          <figcaption>Deli owner <span>South Carolina</span></figcaption>
+        </figure>
+        <figure class="video" data-yt="8Hf0FsPboHg">
+          <div class="frame" style="aspect-ratio: 4/3"><button class="poster" aria-label="Play the banh mi shop owner's testimonial"><img src="https://i.ytimg.com/vi/8Hf0FsPboHg/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span></button></div>
+          <figcaption>Banh mi shop owner <span>Referred another business to us</span></figcaption>
+        </figure>
+      </div>
 
-  <!-- ─────────────────────────────── WHO WE SERVE -->
-  <section class="who-we-serve" id="about">
-    <div>
-      <p class="section-eyebrow fade-in">Who We Work With</p>
-      <h2 class="section-h2 fade-in delay-1">Built for restaurants that take their craft seriously</h2>
-      <p class="body-text fade-in delay-2">We work exclusively with premium restaurants, cafes, bakeries, and bars whose online presence does not come close to matching what they have built in person.</p>
-      <p class="body-text fade-in delay-2">If you care deeply about who walks through your door and want a system that brings those exact people to you, keep reading.</p>
-      <div class="tags-row fade-in delay-3">
-        <span class="tag">Premium Dining</span>
-        <span class="tag">Luxury Dining</span>
-        <span class="tag">Fine Cafes</span>
-        <span class="tag">Artisan Bakeries</span>
-        <span class="tag">Cocktail Bars</span>
-        <span class="tag">Wine Bars</span>
+      <div class="tickets reveal">
+        <article class="ticket"><header><span>Ticket #001</span><span>Steakhouse, NY</span></header>
+          <blockquote>“Wow, we see that it is possible, and it's actually amazing.”</blockquote>
+          <footer>Said after they told us they didn't believe social could bring them more people</footer></article>
+        <article class="ticket"><header><span>Ticket #002</span><span>Steakhouse, NY</span></header>
+          <blockquote>“There's no question about it that... you know what you're doing, because your post got 5 times the amount of traction by the other ones.”</blockquote>
+          <footer>On a call with us</footer></article>
+        <article class="ticket"><header><span>Ticket #003</span><span>Steakhouse, NY</span></header>
+          <blockquote>“You've definitely proven a point to me regarding your ability to, you know, to find winning content.”</blockquote>
+          <footer>On a call with us</footer></article>
       </div>
-    </div>
-    <ul class="serve-list fade-in delay-1">
-      <li>
-        <div class="serve-heading">Premium Restaurants</div>
-        <p class="serve-body">A distinct identity that deserves to be seen by the right people. You have built something worth talking about. We make sure the right audience finds it.</p>
-      </li>
-      <li>
-        <div class="serve-heading">Luxury Cafes</div>
-        <p class="serve-body">Specialty coffee, curated menus, and an atmosphere that photographs beautifully. You have built something worth sharing. We make sure people see it.</p>
-      </li>
-      <li>
-        <div class="serve-heading">High End Bakeries</div>
-        <p class="serve-body">Craft and detail that sets you apart from everything else on the block. The kind of place that earns loyal customers the moment they walk in.</p>
-      </li>
-      <li>
-        <div class="serve-heading">Cocktail and Wine Bars</div>
-        <p class="serve-body">Thoughtful menus, serious craft, and a room that feels like nowhere else. Your social presence should match the experience you have created.</p>
-      </li>
-    </ul>
-  </section>
 
-  <!-- ─────────────────────────────── THE OFFER -->
-  <section class="offer" id="offer">
-    <div class="offer-top">
-      <div class="offer-left fade-in">
-        <p class="section-eyebrow">The 90 Day Growth System</p>
-        <h2 class="offer-h2">90 days to find what works. Then we scale it.</h2>
+      <h3 class="sub-h reveal">The receipts</h3>
+      <div class="receipts reveal">
+        <div class="before-after">
+          <figure class="shot"><img src="assets/proof/followers-before.jpg" alt="Instagram profile showing 3,285 followers" loading="lazy" width="603" height="535"><figcaption><b>Before:</b> 3,285 followers</figcaption></figure>
+          <figure class="shot"><img src="assets/proof/followers-now.jpg" alt="Instagram profile showing 11.7K followers" loading="lazy" width="900" height="359"><figcaption><b>Now:</b> 11.7K followers. Fertility clinic, New York</figcaption></figure>
+        </div>
+        <figure class="shot"><img src="assets/proof/reel-10m.jpg" alt="Reel with 10 million views" loading="lazy" width="418" height="652"><figcaption><b>10M views</b> on one reel</figcaption></figure>
+        <figure class="shot"><img src="assets/proof/views-30d.jpg" alt="Instagram insights: 1,012,365 views in 30 days" loading="lazy" width="700" height="820"><figcaption><b>1,012,365 views</b> in 30 days. 0% from ads.</figcaption></figure>
+        <figure class="shot"><img src="assets/proof/reel-651k.jpg" alt="Reel insights: 651,781 views and 725 saves" loading="lazy" width="633" height="1244"><figcaption><b>651,781 views</b> and 725 saves on one reel</figcaption></figure>
+        <figure class="shot"><img src="assets/proof/reels-1m.jpg" alt="Two reels at 1M and 1.1M views" loading="lazy" width="700" height="618"><figcaption><b>1M and 1.1M</b> views, back to back</figcaption></figure>
       </div>
-      <div class="offer-pull-quote fade-in delay-1">
-        <p>Your restaurant should not be posting until you know exactly who you are posting for and why.</p>
-      </div>
-    </div>
-    <div class="offer-cards">
-      <div class="offer-card fade-in">
-        <div class="offer-card-num">01</div>
-        <div class="offer-card-heading">The Foundation</div>
-        <p class="offer-card-body">Before a single post goes live, we build everything. Who your ideal customer is. What your competitors are doing. What makes your restaurant impossible to copy.</p>
-      </div>
-      <div class="offer-card fade-in delay-1">
-        <div class="offer-card-num">02</div>
-        <div class="offer-card-heading">The Sprint</div>
-        <p class="offer-card-body">One post per day for two weeks. Every piece of content is tracked. Weekly recaps show you what is working and what to capture next. We edit, post, and analyze.</p>
-      </div>
-      <div class="offer-card fade-in delay-2">
-        <div class="offer-card-num">03</div>
-        <div class="offer-card-heading">The Scale</div>
-        <p class="offer-card-body">By Day 22 we know your winning formula. Three to five posts per week, built around what the data already proved works.</p>
+
+      <h3 class="sub-h reveal">What clients text us</h3>
+      <div class="texts reveal">
+        <img src="assets/proof/text-team.jpg" alt="Client text: Thanks for your great work! You push my team working together, in a good way" loading="lazy" width="900" height="339">
+        <img src="assets/proof/text-reach.jpg" alt="Client text: Thank you for all the work and understanding. The reach has been very good" loading="lazy" width="900" height="420">
+        <img src="assets/proof/text-busy.jpg" alt="Client text: We are having a good busy day here. And I love your work" loading="lazy" width="900" height="234">
+        <img src="assets/proof/text-triple.jpg" alt="Client text: I just saw the views on the triple decker video. You did great" loading="lazy" width="834" height="360">
+        <img src="assets/proof/text-videos.jpg" alt="Client text: The videos look good, thank you" loading="lazy" width="900" height="336">
+        <img src="assets/proof/text-reel.jpg" alt="Client text: I saw the new reel, it looks awesome" loading="lazy" width="900" height="246">
+        <img src="assets/proof/text-awesome.jpg" alt="Client text: Hey just wanted to say you are so awesome" loading="lazy" width="900" height="197">
       </div>
     </div>
   </section>
 
-  <!-- ─────────────────────────────── IMAGE BREAK -->
-  <div class="image-break">
-    <div class="image-panel">
-      <img src="pexels-nadin-sh-78971847-28996261.jpg" alt="Luxury fine dining" style="object-position: center 38%;">
+  <!-- THE CALL, VALUE STACKED -->
+  <section id="book" style="padding-top: 24px">
+    <div class="wrap">
+      <div class="cta-box reveal">
+        <p class="eyebrow">Free 30-minute growth call</p>
+        <h2>Get a plan for your page, <em>whether you work with us or not.</em></h2>
+        <ul>
+          <li>An audit of your page, done before the call.</li>
+          <li>We break down your goals, what you're struggling with, and why your growth is stuck right now.</li>
+          <li>What we'd do to fix it, built around your business and your goals.</li>
+          <li>A straight answer on whether we're the right fit.</li>
+        </ul>
+        <div class="btn-row"><a class="btn book" href="https://calendly.com/dfernandez-createyl/discovery-call" target="_blank" rel="noopener">Book your growth call</a></div>
+        <p class="micro" style="color: var(--mist); opacity: .7">Pick a time that works for you</p>
+      </div>
+
+      <div class="ps reveal">
+        <p><strong>P.S.</strong> Every number on this page comes from a real client account. If your food is great and your page doesn't show it, that's the gap we close.</p>
+        <p class="muted">Every week you post without a plan is a week of reach you don't get back. <a class="book" href="https://calendly.com/dfernandez-createyl/discovery-call" target="_blank" rel="noopener">Book the call here.</a></p>
+      </div>
     </div>
-    <div class="image-panel">
-      <img src="pexels-consuelo-borroni-384723245-32399761.jpg" alt="Restaurant interior" style="object-position: center 28%;">
-    </div>
-    <div class="image-panel">
-      <img src="pexels-holoshuriken-15750741.jpg" alt="Wine service" style="object-position: center 60%;">
-    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <img src="assets/logo.png" alt="CreateYL" width="250" height="104" loading="lazy">
+    <a href="https://instagram.com/createyl" target="_blank" rel="noopener">@createyl on Instagram</a>
+    <span>© 2026 CreateYL</span>
   </div>
+</footer>
 
-  <!-- ─────────────────────────────── HOW IT WORKS -->
-  <section class="how-it-works" id="how-it-works">
-    <div class="how-intro">
-      <h2 class="section-h2 fade-in" style="font-size: clamp(34px, 3.8vw, 52px);">Step by step. No guessing.</h2>
-      <p class="how-intro-body fade-in delay-1">Every step has a purpose. Every day is accounted for.</p>
-    </div>
-    <ul class="steps-list">
-      <li class="step-item fade-in">
-        <div class="step-num">01</div>
-        <div class="step-content">
-          <div class="step-heading">You tell us everything about your restaurant</div>
-        </div>
-        <div class="step-date">Day 1</div>
-      </li>
-      <li class="step-item fade-in">
-        <div class="step-num">02</div>
-        <div class="step-content">
-          <div class="step-heading">We build the foundation before anything goes live</div>
-        </div>
-        <div class="step-date">Days 1 to 7</div>
-      </li>
-      <li class="step-item fade-in">
-        <div class="step-num">03</div>
-        <div class="step-content">
-          <div class="step-heading">We test what works, one post per day</div>
-        </div>
-        <div class="step-date">Days 8 to 21</div>
-      </li>
-      <li class="step-item fade-in">
-        <div class="step-num">04</div>
-        <div class="step-content">
-          <div class="step-heading">We find your winning formula and scale it</div>
-        </div>
-        <div class="step-date">Day 22 onward</div>
-      </li>
-    </ul>
-  </section>
+<div class="sticky-cta" id="sticky"><a class="btn book" href="https://calendly.com/dfernandez-createyl/discovery-call" target="_blank" rel="noopener">Book a free growth call</a></div>
 
-  <!-- ─────────────────────────────── PROOF -->
-  <section class="proof" id="results">
-    <div class="proof-header fade-in">
-      <p class="section-eyebrow">Results</p>
-      <h2>What this looks like for real clients</h2>
-    </div>
-    <div class="proof-cards">
-      <div class="proof-card fade-in">
-        <div class="proof-stat">10M+</div>
-        <div class="proof-label">Views from the right audience</div>
-        <p class="proof-body">One client. One month. Organic reach from the exact customers the restaurant wanted to attract.</p>
-      </div>
-      <div class="proof-card fade-in delay-1">
-        <div class="proof-stat">72%</div>
-        <div class="proof-label">Above baseline in week one</div>
-        <p class="proof-body">49,000+ views in week one of the sprint, before full posting speed. That is what a built foundation does.</p>
-      </div>
-      <div class="proof-card fade-in delay-2">
-        <div class="proof-stat">70K+</div>
-        <div class="proof-label">Added views from one format</div>
-        <p class="proof-body">Vietnamese restaurant. Found the winning format. Scaled it immediately. 70,000 incremental views on top of the baseline.</p>
-      </div>
-    </div>
-    <div class="testimonial-block fade-in">
-      <p class="testimonial-quote">You push my team to work together in a good way. I love your work. The reach has been very good.</p>
-      <p class="testimonial-attribution">Restaurant client, CreateYL</p>
-    </div>
-  </section>
+<script>
+(function () {
+  "use strict";
+  document.documentElement.classList.add("js");
 
-  <!-- ─────────────────────────────── CTA -->
-  <section class="cta-section" id="cta">
-    <div class="fade-in">
-      <p class="cta-eyebrow">Ready to start</p>
-      <h2>Your restaurant deserves to be <em>seen.</em></h2>
-      <p class="cta-sub">Book a free discovery call. We look at your restaurant, your current online presence, and tell you exactly what we would build for you.</p>
-      <a href="https://calendly.com/dfernandez-createyl/discovery-call" class="btn-primary" target="_blank" rel="noopener">Book Your Discovery Call</a>
-      <p class="cta-note">14 days before the system ends, you decide whether to continue. No pressure.</p>
-    </div>
-  </section>
+  // Solid nav and mobile sticky button once you scroll past the hero
+  var nav = document.getElementById("nav"), sticky = document.getElementById("sticky");
+  var hero = document.querySelector(".hero"), book = document.getElementById("book");
+  function onScroll() {
+    var y = window.scrollY, h = hero.offsetHeight;
+    nav.classList.toggle("solid", y > 40);
+    var nearBook = book.getBoundingClientRect().top < window.innerHeight * 0.9;
+    sticky.classList.toggle("show", y > h * 0.7 && !nearBook);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
 
-  <!-- ─────────────────────────────── FOOTER -->
-  <footer>
-    <img src="CreateYL New Logo (Transparent).png" alt="CreateYL">
-    <span class="footer-right">2026 CreateYL &middot; www.createyl.com</span>
-  </footer>
-
-  <script>
-    // ─── STICKY NAV
-    const nav = document.getElementById('main-nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
-
-    // ─── HAMBURGER MENU
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
+  // Gentle reveal, content stays visible if anything fails
+  if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove("pending"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll(".reveal").forEach(function (el) {
+      if (el.getBoundingClientRect().top > window.innerHeight) { el.classList.add("pending"); io.observe(el); }
     });
+  }
 
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-      });
+  // Videos play right on the page
+  document.querySelectorAll(".video[data-yt]").forEach(function (fig) {
+    var btn = fig.querySelector(".poster");
+    btn.addEventListener("click", function () {
+      var id = fig.dataset.yt;
+      var origin = /^https?:/.test(location.protocol) ? "&origin=" + encodeURIComponent(location.origin) : "";
+      fig.querySelector(".frame").innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1' + origin + '" title="Client testimonial video" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+      var a = document.createElement("a");
+      a.className = "fallback"; a.href = "https://www.youtube.com/watch?v=" + id; a.target = "_blank"; a.rel = "noopener";
+      a.textContent = "Video not loading? Watch it on YouTube";
+      fig.appendChild(a);
     });
+  });
 
-    // Close mobile menu on outside click
-    document.addEventListener('click', (e) => {
-      if (!nav.contains(e.target) && !mobileMenu.contains(e.target)) {
-        mobileMenu.classList.remove('open');
-      }
-    });
-
-    // ─── INTERSECTION OBSERVER — FADE IN
-    const fadeEls = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.08,
-      rootMargin: '0px 0px -40px 0px'
-    });
-
-    fadeEls.forEach(el => observer.observe(el));
-
-    // ─── SMOOTH SCROLL for anchor links (supplement CSS)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href === '#') return;
-        const target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          const navHeight = nav.offsetHeight;
-          const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
-          window.scrollTo({ top, behavior: 'smooth' });
-        }
-      });
-    });
-  </script>
+  // Tap a screenshot to see it full size
+  document.addEventListener("click", function (e) {
+    var img = e.target.closest(".shot img, .texts img");
+    if (!img) return;
+    var box = document.createElement("div");
+    box.className = "lightbox"; box.setAttribute("role", "dialog"); box.setAttribute("aria-label", "Screenshot, full size");
+    box.innerHTML = '<img src="' + img.getAttribute("src") + '" alt="">';
+    box.addEventListener("click", function () { box.remove(); });
+    document.body.appendChild(box);
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") { var b = document.querySelector(".lightbox"); if (b) b.remove(); } });
+})();
+</script>
 </body>
 </html>
