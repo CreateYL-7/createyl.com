@@ -60,6 +60,7 @@ h1 { font-size: clamp(2.7rem, 8vw, 5.4rem); }
 h2 { font-size: clamp(2rem, 5.4vw, 3.3rem); }
 h1 em, h2 em { font-style: italic; font-weight: 400; color: var(--sand); }
 p { margin: 0; }
+p, li, blockquote, .help span, .step span, .strip span { text-wrap: pretty; }
 .lede { font-size: clamp(1.1rem, 2.4vw, 1.3rem); color: var(--mist); opacity: .86; max-width: 56ch; }
 .muted { color: var(--muted); }
 
@@ -146,15 +147,9 @@ p { margin: 0; }
 .ticket footer { font: 400 1rem/1.2 var(--heading); letter-spacing: .1em; color: var(--muted); }
 
 .sub-h { font: 400 1.5rem/1 var(--heading); letter-spacing: .1em; color: var(--white); margin: 64px 0 18px; }
-.receipts { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; align-items: start; }
-.before-after { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 16px; align-items: center; }
-.shot { margin: 0; display: grid; gap: 8px; min-width: 0; }
-.shot img { width: 100%; border-radius: 3px; border: 1px solid var(--line); background: var(--surface); cursor: zoom-in; transition: border-color .2s ease; }
-.shot img:hover { border-color: var(--sand); }
-.shot figcaption { font-size: .9rem; color: var(--muted); line-height: 1.4; }
-.shot figcaption b { color: var(--white); font-weight: 500; }
-.texts { columns: 3 260px; column-gap: 16px; }
-.texts img { width: 100%; border-radius: 3px; border: 1px solid var(--line); margin-bottom: 16px; break-inside: avoid; cursor: zoom-in; }
+.texts { columns: 2 320px; column-gap: 18px; }
+.msg { break-inside: avoid; margin: 0 0 18px; background: #000; border: 1px solid var(--line); border-radius: 16px; padding: 18px 16px; }
+.msg img { display: block; max-width: 100%; height: auto; cursor: zoom-in; }
 
 /* CTA */
 .cta-box { background: linear-gradient(150deg, var(--teal), #002424); border: 1px solid rgba(203,175,135,.3); border-radius: 4px; padding: clamp(28px, 6vw, 56px); display: grid; gap: 22px; }
@@ -190,8 +185,7 @@ footer.site a:hover { color: var(--sand); }
   .strip > div:nth-child(n+3) { border-top: 1px solid var(--line); }
   .split { grid-template-columns: 1fr; gap: 36px; }
   .photo { aspect-ratio: 16/10; }
-  .receipts { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .tickets { grid-template-columns: 1fr; }
+    .tickets { grid-template-columns: 1fr; }
 }
 @media (max-width: 680px) {
   section { padding-block: 72px; }
@@ -201,8 +195,7 @@ footer.site a:hover { color: var(--sand); }
   .steps { grid-template-columns: 1fr; }
   .videos { grid-template-columns: 1fr; }
   .videos .tall { max-width: 340px; width: 100%; justify-self: center; }
-  .before-after { grid-template-columns: 1fr; }
-  .btn-row .btn { width: 100%; }
+    .btn-row .btn { width: 100%; }
   .sticky-cta { display: block; }
   body { padding-bottom: 84px; }
 }
@@ -234,12 +227,11 @@ footer.site a:hover { color: var(--sand); }
     <div class="wrap">
       <p class="eyebrow">Social media for food businesses</p>
       <h1>Your food is already loved in person. <em>Let's get it seen online.</em></h1>
-      <p class="lede">CreateYL builds a content system around your business, so the people who should be your regulars actually find you. We do it with you, step by step, in 90 days.</p>
+      <p class="lede">We build a content system around your business, so the people who should be your regulars actually find you. We do it with you, step by step, in 90 days.</p>
       <div class="btn-row">
         <a class="btn book" href="https://calendly.com/dfernandez-createyl/discovery-call" target="_blank" rel="noopener">Book a free growth call</a>
         <a class="btn ghost" href="#results">See the results</a>
       </div>
-      <p class="micro">30 minutes. We audit your page before we talk.</p>
     </div>
   </section>
 
@@ -251,7 +243,7 @@ footer.site a:hover { color: var(--sand); }
       <div><b>10M</b><span>views on a single client reel</span></div>
       <div><b>25.2K</b><span>people follow @createyl, built with the same system</span></div>
     </div>
-    <p class="strip-note">Real numbers from real accounts. Screenshots below.</p>
+    <p class="strip-note">Real numbers from real client accounts.</p>
   </div>
 
   <!-- FLOODLIGHT THE PROBLEM -->
@@ -260,8 +252,8 @@ footer.site a:hover { color: var(--sand); }
       <p class="eyebrow">Sound familiar?</p>
       <h2>You built something people love. <em>Online, it's still a secret.</em></h2>
       <ul class="pains">
-        <li>You've been open for years and people nearby still don't know you exist.</li>
-        <li>You post, the views come in, and nothing changes at the register.</li>
+        <li>People love your place in person. Your page doesn't show it.</li>
+        <li>You post, but your page isn't bringing in new faces or reminding regulars to come back.</li>
         <li>You're running the place. Planning, editing, and posting never get done.</li>
         <li>You tried an agency or a freelancer. You got pretty posts and no plan.</li>
       </ul>
@@ -333,27 +325,15 @@ footer.site a:hover { color: var(--sand); }
           <footer>On a call with us</footer></article>
       </div>
 
-      <h3 class="sub-h reveal">The receipts</h3>
-      <div class="receipts reveal">
-        <div class="before-after">
-          <figure class="shot"><img src="assets/proof/followers-before.jpg" alt="Instagram profile showing 3,285 followers" loading="lazy" width="603" height="535"><figcaption><b>Before:</b> 3,285 followers</figcaption></figure>
-          <figure class="shot"><img src="assets/proof/followers-now.jpg" alt="Instagram profile showing 11.7K followers" loading="lazy" width="900" height="359"><figcaption><b>Now:</b> 11.7K followers. Fertility clinic, New York</figcaption></figure>
-        </div>
-        <figure class="shot"><img src="assets/proof/reel-10m.jpg" alt="Reel with 10 million views" loading="lazy" width="418" height="652"><figcaption><b>10M views</b> on one reel</figcaption></figure>
-        <figure class="shot"><img src="assets/proof/views-30d.jpg" alt="Instagram insights: 1,012,365 views in 30 days" loading="lazy" width="700" height="820"><figcaption><b>1,012,365 views</b> in 30 days. 0% from ads.</figcaption></figure>
-        <figure class="shot"><img src="assets/proof/reel-651k.jpg" alt="Reel insights: 651,781 views and 725 saves" loading="lazy" width="633" height="1244"><figcaption><b>651,781 views</b> and 725 saves on one reel</figcaption></figure>
-        <figure class="shot"><img src="assets/proof/reels-1m.jpg" alt="Two reels at 1M and 1.1M views" loading="lazy" width="700" height="618"><figcaption><b>1M and 1.1M</b> views, back to back</figcaption></figure>
-      </div>
-
       <h3 class="sub-h reveal">What clients text us</h3>
       <div class="texts reveal">
-        <img src="assets/proof/text-team.jpg" alt="Client text: Thanks for your great work! You push my team working together, in a good way" loading="lazy" width="900" height="339">
-        <img src="assets/proof/text-reach.jpg" alt="Client text: Thank you for all the work and understanding. The reach has been very good" loading="lazy" width="900" height="420">
-        <img src="assets/proof/text-busy.jpg" alt="Client text: We are having a good busy day here. And I love your work" loading="lazy" width="900" height="234">
-        <img src="assets/proof/text-triple.jpg" alt="Client text: I just saw the views on the triple decker video. You did great" loading="lazy" width="834" height="360">
-        <img src="assets/proof/text-videos.jpg" alt="Client text: The videos look good, thank you" loading="lazy" width="900" height="336">
-        <img src="assets/proof/text-reel.jpg" alt="Client text: I saw the new reel, it looks awesome" loading="lazy" width="900" height="246">
-        <img src="assets/proof/text-awesome.jpg" alt="Client text: Hey just wanted to say you are so awesome" loading="lazy" width="900" height="197">
+        <figure class="msg"><img src="assets/proof/text-videos.jpg" style="width:95.6%" alt="Client text: The videos look good! Thank you!" loading="lazy" width="1013" height="404"></figure>
+        <figure class="msg"><img src="assets/proof/text-team.jpg" style="width:71.6%" alt="Client text: Thanks for your great work! You push my team working together. In a good way" loading="lazy" width="759" height="407"></figure>
+        <figure class="msg"><img src="assets/proof/text-reach.jpg" style="width:75.4%" alt="Client text: Thank you for all the work and understanding. The reach has been very good" loading="lazy" width="799" height="506"></figure>
+        <figure class="msg"><img src="assets/proof/text-triple.jpg" style="width:66.9%" alt="Client text: I just saw the views on the triple decker video!! Thank you! You did great!!" loading="lazy" width="709" height="461"></figure>
+        <figure class="msg"><img src="assets/proof/text-busy.jpg" style="width:67.5%" alt="Client text: We are having a good busy day here. And I love your work" loading="lazy" width="716" height="282"></figure>
+        <figure class="msg"><img src="assets/proof/text-reel.jpg" style="width:58.0%" alt="Client text: I saw the new reel. It looks awesome! Thank you!!!" loading="lazy" width="615" height="288"></figure>
+        <figure class="msg"><img src="assets/proof/text-awesome.jpg" style="width:71.4%" alt="Client text: Hey just wanted to say you are so awesome!!" loading="lazy" width="757" height="233"></figure>
       </div>
     </div>
   </section>
@@ -418,6 +398,15 @@ footer.site a:hover { color: var(--sand); }
     });
   }
 
+  // No single word left alone on the last line
+  document.querySelectorAll("p, li, blockquote, h1, h2, .help b, .help span, .step span, .strip span, figcaption, .ticket footer").forEach(function (el) {
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), n, last = null;
+    while ((n = w.nextNode())) { if (n.nodeValue.trim()) last = n; }
+    if (!last) return;
+    var t = last.nodeValue.replace(/\s+$/, ""), i = t.lastIndexOf(" ");
+    if (i > 0) last.nodeValue = t.slice(0, i) + "\u00a0" + t.slice(i + 1) + last.nodeValue.slice(t.length);
+  });
+
   // Videos play right on the page
   document.querySelectorAll(".video[data-yt]").forEach(function (fig) {
     var btn = fig.querySelector(".poster");
@@ -434,7 +423,7 @@ footer.site a:hover { color: var(--sand); }
 
   // Tap a screenshot to see it full size
   document.addEventListener("click", function (e) {
-    var img = e.target.closest(".shot img, .texts img");
+    var img = e.target.closest(".msg img");
     if (!img) return;
     var box = document.createElement("div");
     box.className = "lightbox"; box.setAttribute("role", "dialog"); box.setAttribute("aria-label", "Screenshot, full size");
