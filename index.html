@@ -150,6 +150,10 @@ p, li, blockquote, .help span, .step span, .strip span { text-wrap: pretty; }
 .texts { columns: 2 320px; column-gap: 18px; }
 .msg { break-inside: avoid; margin: 0 0 18px; background: #000; border: 1px solid var(--line); border-radius: 16px; padding: 18px 16px; }
 .msg img { display: block; max-width: 100%; height: auto; cursor: zoom-in; }
+.insights-intro { color: var(--muted); margin: -6px 0 22px; }
+.insights { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+.insight { margin: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #0c0f14; min-width: 0; }
+.insight img { display: block; width: 100%; height: auto; cursor: zoom-in; }
 
 /* CTA */
 .cta-box { background: linear-gradient(150deg, var(--teal), #002424); border: 1px solid rgba(203,175,135,.3); border-radius: 4px; padding: clamp(28px, 6vw, 56px); display: grid; gap: 22px; }
@@ -188,6 +192,7 @@ footer.site a:hover { color: var(--sand); }
     .tickets { grid-template-columns: 1fr; }
 }
 @media (max-width: 680px) {
+  .insights { grid-template-columns: 1fr; }
   section { padding-block: 72px; }
   .nav-links a:not(.btn) { display: none; }
   .nav img { height: 34px; }
@@ -239,7 +244,7 @@ footer.site a:hover { color: var(--sand); }
   <div class="wrap">
     <div class="strip reveal">
       <div><b>3,285 → 11.7K</b><span>Instagram followers for a fertility clinic in New York</span></div>
-      <div><b>1,066</b><span>new followers for a deli since June</span></div>
+      <div><b>+1,137</b><span>new followers for a deli in the last 90 days</span></div>
       <div><b>10M</b><span>views on a single client reel</span></div>
       <div><b>25.2K</b><span>people follow @createyl, built with the same system</span></div>
     </div>
@@ -323,6 +328,17 @@ footer.site a:hover { color: var(--sand); }
         <article class="ticket"><header><span>Ticket #003</span><span>Steakhouse, NY</span></header>
           <blockquote>“You've definitely proven a point to me regarding your ability to, you know, to find winning content.”</blockquote>
           <footer>On a call with us</footer></article>
+      </div>
+
+      <h3 class="sub-h reveal">Inside one deli's account</h3>
+      <p class="insights-intro reveal">Straight from the deli's Instagram insights.</p>
+      <div class="insights reveal">
+        <figure class="insight"><img src="assets/insights/overview-90d.jpg" alt="Last 90 days: 864,050 views, +1,137 net followers, 16,565 interactions" loading="lazy" width="900" height="576"></figure>
+        <figure class="insight"><img src="assets/insights/reel-354k.jpg" alt="One reel: 354,004 views, 597 follows, 8K likes, 738 saves" loading="lazy" width="900" height="576"></figure>
+        <figure class="insight"><img src="assets/insights/reel-85k.jpg" alt="One reel: 85,031 views, 286 follows, 1.9K likes, 154 saves" loading="lazy" width="900" height="576"></figure>
+        <figure class="insight"><img src="assets/insights/reel-40k.jpg" alt="One reel: 40,188 views, 98 follows, 1.2K likes" loading="lazy" width="900" height="576"></figure>
+        <figure class="insight"><img src="assets/insights/reel-28k.jpg" alt="One reel: 27,874 views, 59 follows, 538 likes" loading="lazy" width="900" height="576"></figure>
+        <figure class="insight"><img src="assets/insights/reel-17k.jpg" alt="One reel: 16,695 views, 60 follows, 351 likes" loading="lazy" width="900" height="576"></figure>
       </div>
 
       <h3 class="sub-h reveal">What clients text us</h3>
@@ -423,7 +439,7 @@ footer.site a:hover { color: var(--sand); }
 
   // Tap a screenshot to see it full size
   document.addEventListener("click", function (e) {
-    var img = e.target.closest(".msg img");
+    var img = e.target.closest(".msg img, .insight img");
     if (!img) return;
     var box = document.createElement("div");
     box.className = "lightbox"; box.setAttribute("role", "dialog"); box.setAttribute("aria-label", "Screenshot, full size");
