@@ -14,6 +14,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#000000">
 <link rel="icon" type="image/png" href="assets/favicon.png">
+<script src="assets/ga.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Jost:wght@400;500&display=swap">
@@ -33,7 +34,7 @@
   --title: "Bauer Bodoni", "Bodoni Moda", "Bodoni 72", Didot, "Times New Roman", serif;
   --heading: "Bebas Neue", "Oswald", Impact, "Arial Narrow", sans-serif;
   --body: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
-  --book: "https://calendly.com/dfernandez-createyl/discovery-call";
+  --book: "https://calendly.com/dfernandez-createyl/discovery-call?utm_source=website&utm_medium=button";
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -90,7 +91,7 @@ p, li, blockquote, .help span, .step span, .strip span { text-wrap: pretty; }
 .hero h1 { max-width: 14ch; }
 
 /* Proof strip */
-.strip { border-top: 1px solid var(--sand); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); }
+.strip { border-top: 1px solid var(--sand); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); }
 .strip > div { padding: 26px 18px 24px; display: grid; gap: 6px; align-content: start; min-width: 0; }
 .strip > div + div { border-left: 1px solid var(--line); }
 .strip b { font: 400 clamp(2.3rem, 5vw, 3.4rem)/.95 var(--heading); color: var(--white); letter-spacing: .02em; overflow-wrap: anywhere; }
@@ -125,7 +126,7 @@ p, li, blockquote, .help span, .step span, .strip span { text-wrap: pretty; }
 .decide p { font-size: 1.1rem; color: var(--white); }
 
 /* Results */
-.videos { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 44px; }
+.videos { display: grid; grid-template-columns: minmax(0, 1fr); max-width: 780px; gap: 28px; align-items: start; margin-top: 44px; }
 .video { display: grid; gap: 12px; margin: 0; min-width: 0; }
 .frame { position: relative; width: 100%; background: var(--surface); border-radius: 3px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 30px 80px -30px rgba(203,175,135,.25); }
 .frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #000; }
@@ -138,6 +139,16 @@ p, li, blockquote, .help span, .step span, .strip span { text-wrap: pretty; }
 .video figcaption { font: 400 1.15rem/1 var(--heading); letter-spacing: .1em; color: var(--white); }
 .video figcaption span { color: var(--muted); font: 400 .95rem var(--body); letter-spacing: 0; margin-left: 8px; }
 .fallback { font-size: .85rem; color: var(--muted); }
+.video.feature { max-width: 780px; margin: 40px 0 0; }
+.vposter .bg { transform: scale(1.2); filter: blur(22px) brightness(.45); }
+.poster.vposter:hover .bg { filter: blur(22px) brightness(.55); }
+.vposter .fg { position: absolute; top: 0; bottom: 0; left: 50%; height: 100%; aspect-ratio: 9/16; transform: translateX(-50%); overflow: hidden; box-shadow: 0 0 60px rgba(0,0,0,.6); }
+.vposter .fg img { filter: none; }
+.vmodal { position: fixed; inset: 0; z-index: 110; background: rgba(0,0,0,.94); display: grid; place-items: center; align-content: center; gap: 12px; padding: max(16px, env(safe-area-inset-top, 0px)) 16px max(16px, env(safe-area-inset-bottom, 0px)); }
+.vbox { position: relative; height: min(84vh, calc((100vw - 32px) * 16 / 9)); aspect-ratio: 9/16; max-width: 100%; background: #000; border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
+.vbox iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.vclose { position: absolute; top: max(12px, env(safe-area-inset-top, 0px)); right: 12px; background: rgba(0,0,0,.6); color: var(--mist); border: 1px solid var(--line); border-radius: 2px; font: 400 1rem/1 var(--heading); letter-spacing: .12em; padding: 10px 14px; cursor: pointer; }
+.vclose:hover { border-color: var(--sand); color: var(--sand); }
 
 .tickets { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 56px; }
 .ticket { background: var(--surface); border: 1px solid var(--line); border-radius: 2px; padding: 20px 22px 22px; display: grid; gap: 14px; align-content: start; position: relative; }
@@ -184,15 +195,16 @@ footer.site a:hover { color: var(--sand); }
 .js .reveal.pending { opacity: 0; transform: translateY(18px); }
 
 @media (max-width: 900px) {
-  .strip { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .strip > div:nth-child(3) { border-left: 0; }
-  .strip > div:nth-child(n+3) { border-top: 1px solid var(--line); }
   .split { grid-template-columns: 1fr; gap: 36px; }
   .photo { aspect-ratio: 16/10; }
     .tickets { grid-template-columns: 1fr; }
   .insights { grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
 @media (max-width: 680px) {
+  .strip { grid-template-columns: 1fr; }
+  .strip > div { grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr); align-items: center; gap: 14px; padding: 16px 4px; }
+  .strip > div + div { border-left: 0; border-top: 1px solid var(--line); }
+  .strip b { font-size: 2.3rem; }
   .insights { grid-template-columns: 1fr; }
   section { padding-block: 72px; }
   .nav-links a:not(.btn) { display: none; }
@@ -220,7 +232,7 @@ footer.site a:hover { color: var(--sand); }
     <nav class="nav-links" aria-label="Main">
       <a href="#results">Results</a>
       <a href="#how">How it works</a>
-      <a class="btn book" href="https://calendly.com/dfernandez-createyl/discovery-call" target="_blank" rel="noopener">Book a call</a>
+      <a class="btn book" href="https://calendly.com/dfernandez-createyl/discovery-call?utm_source=website&amp;utm_medium=button" target="_blank" rel="noopener">Book a call</a>
     </nav>
   </div>
 </header>
@@ -235,7 +247,7 @@ footer.site a:hover { color: var(--sand); }
       <h1>Your food is already loved in person. <em>Let's get it seen online.</em></h1>
       <p class="lede">We build a content system around your business, so the people who should be your regulars actually find you. We do it with you, step by step, in 90 days.</p>
       <div class="btn-row">
-        <a class="btn book" href="https://calendly.com/dfernandez-createyl/discovery-call" target="_blank" rel="noopener">Book a free growth call</a>
+        <a class="btn book" href="https://calendly.com/dfernandez-createyl/discovery-call?utm_source=website&amp;utm_medium=button" target="_blank" rel="noopener">Book a free growth call</a>
         <a class="btn ghost" href="#results">See the results</a>
       </div>
     </div>
@@ -244,12 +256,16 @@ footer.site a:hover { color: var(--sand); }
   <!-- PROOF FIRST -->
   <div class="wrap">
     <div class="strip reveal">
-      <div><b>3,285 → 11.7K</b><span>Instagram followers for a fertility clinic in New York</span></div>
-      <div><b>+1,137</b><span>new followers for a deli in the last 90 days</span></div>
+      <div><b>+1,300+</b><span>new followers for a deli in the last 90 days</span></div>
       <div><b>10M</b><span>views on a single client reel</span></div>
       <div><b>25.2K</b><span>people follow @createyl, built with the same system</span></div>
     </div>
     <p class="strip-note">Real numbers from real client accounts.</p>
+
+    <figure class="video feature reveal" data-yt="eeeJmhBQVGA" data-vertical="1">
+      <div class="frame" style="aspect-ratio: 16/9"><button class="poster vposter" aria-label="Play the deli owner's testimonial"><img class="bg" src="https://i.ytimg.com/vi/eeeJmhBQVGA/hqdefault.jpg" alt=""><span class="fg"><img src="https://i.ytimg.com/vi/eeeJmhBQVGA/hqdefault.jpg" alt=""></span><span class="play"></span></button></div>
+      <figcaption>Deli owner, South Carolina.</figcaption>
+    </figure>
   </div>
 
   <!-- FLOODLIGHT THE PROBLEM -->
@@ -295,7 +311,7 @@ footer.site a:hover { color: var(--sand); }
       </div>
       <div class="decide">
         <p>No guessing and no long wait to find out. By day 75, you decide if we keep going.</p>
-        <a class="btn book" href="https://calendly.com/dfernandez-createyl/discovery-call" target="_blank" rel="noopener">Book a free growth call</a>
+        <a class="btn book" href="https://calendly.com/dfernandez-createyl/discovery-call?utm_source=website&amp;utm_medium=button" target="_blank" rel="noopener">Book a free growth call</a>
       </div>
     </div>
   </section>
@@ -309,10 +325,6 @@ footer.site a:hover { color: var(--sand); }
       </div>
 
       <div class="videos reveal">
-        <figure class="video tall" data-yt="eeeJmhBQVGA">
-          <div class="frame" style="aspect-ratio: 9/16"><button class="poster" aria-label="Play the deli owner's testimonial"><img src="https://i.ytimg.com/vi/eeeJmhBQVGA/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span></button></div>
-          <figcaption>Deli owner <span>South Carolina</span></figcaption>
-        </figure>
         <figure class="video" data-yt="8Hf0FsPboHg">
           <div class="frame" style="aspect-ratio: 4/3"><button class="poster" aria-label="Play the banh mi shop owner's testimonial"><img src="https://i.ytimg.com/vi/8Hf0FsPboHg/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span></button></div>
           <figcaption>Banh mi shop owner <span>Referred another business to us</span></figcaption>
@@ -379,13 +391,13 @@ footer.site a:hover { color: var(--sand); }
           <li>What we'd do to fix it, built around your business and your goals.</li>
           <li>A straight answer on whether we're the right fit.</li>
         </ul>
-        <div class="btn-row"><a class="btn book" href="https://calendly.com/dfernandez-createyl/discovery-call" target="_blank" rel="noopener">Book your growth call</a></div>
+        <div class="btn-row"><a class="btn book" href="https://calendly.com/dfernandez-createyl/discovery-call?utm_source=website&amp;utm_medium=button" target="_blank" rel="noopener">Book your growth call</a></div>
         <p class="micro" style="color: var(--mist); opacity: .7">Pick a time that works for you</p>
       </div>
 
       <div class="ps reveal">
         <p><strong>P.S.</strong> Every number on this page comes from a real client account. If your food is great and your page doesn't show it, that's the gap we close.</p>
-        <p class="muted">Every week you post without a plan is a week of reach you don't get back. <a class="book" href="https://calendly.com/dfernandez-createyl/discovery-call" target="_blank" rel="noopener">Book the call here.</a></p>
+        <p class="muted">Every week you post without a plan is a week of reach you don't get back. <a class="book" href="https://calendly.com/dfernandez-createyl/discovery-call?utm_source=website&amp;utm_medium=button" target="_blank" rel="noopener">Book the call here.</a></p>
       </div>
     </div>
   </section>
@@ -399,7 +411,7 @@ footer.site a:hover { color: var(--sand); }
   </div>
 </footer>
 
-<div class="sticky-cta" id="sticky"><a class="btn book" href="https://calendly.com/dfernandez-createyl/discovery-call" target="_blank" rel="noopener">Book a free growth call</a></div>
+<div class="sticky-cta" id="sticky"><a class="btn book" href="https://calendly.com/dfernandez-createyl/discovery-call?utm_source=website&amp;utm_medium=button" target="_blank" rel="noopener">Book a free growth call</a></div>
 
 <script>
 (function () {
@@ -436,11 +448,33 @@ footer.site a:hover { color: var(--sand); }
     if (i > 0) last.nodeValue = t.slice(0, i) + "\u00a0" + t.slice(i + 1) + last.nodeValue.slice(t.length);
   });
 
+  // Vertical video opens in its own player on the page
+  var lastFocus = null;
+  function closeVideo() {
+    var m = document.querySelector(".vmodal");
+    if (!m) return;
+    m.remove(); document.body.style.overflow = "";
+    if (lastFocus) lastFocus.focus();
+  }
+  function openVertical(id) {
+    lastFocus = document.activeElement;
+    var origin = /^https?:/.test(location.protocol) ? "&origin=" + encodeURIComponent(location.origin) : "";
+    var m = document.createElement("div");
+    m.className = "vmodal"; m.setAttribute("role", "dialog"); m.setAttribute("aria-modal", "true"); m.setAttribute("aria-label", "Client testimonial video");
+    m.innerHTML = '<button class="vclose" type="button">Close ✕</button>' +
+      '<div class="vbox"><iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1' + origin + '" title="Client testimonial video" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>' +
+      '<a class="fallback" href="https://www.youtube.com/watch?v=' + id + '" target="_blank" rel="noopener">Video not loading? Watch it on YouTube</a>';
+    m.addEventListener("click", function (e) { if (e.target === m || e.target.closest(".vclose")) closeVideo(); });
+    document.body.appendChild(m); document.body.style.overflow = "hidden";
+    m.querySelector(".vclose").focus();
+  }
+
   // Videos play right on the page
   document.querySelectorAll(".video[data-yt]").forEach(function (fig) {
     var btn = fig.querySelector(".poster");
     btn.addEventListener("click", function () {
       var id = fig.dataset.yt;
+      if (fig.dataset.vertical) { openVertical(id); return; }
       var origin = /^https?:/.test(location.protocol) ? "&origin=" + encodeURIComponent(location.origin) : "";
       fig.querySelector(".frame").innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1' + origin + '" title="Client testimonial video" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
       var a = document.createElement("a");
@@ -460,7 +494,7 @@ footer.site a:hover { color: var(--sand); }
     box.addEventListener("click", function () { box.remove(); });
     document.body.appendChild(box);
   });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") { var b = document.querySelector(".lightbox"); if (b) b.remove(); } });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") { var b = document.querySelector(".lightbox"); if (b) b.remove(); closeVideo(); } });
 })();
 </script>
 </body>
