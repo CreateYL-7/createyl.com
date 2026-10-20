@@ -2,7 +2,7 @@
    Paste the measurement ID (looks like G-XXXXXXXXXX) between the quotes below.
    While it is empty, nothing is loaded and nothing is tracked. */
 (function () {
-  var GA_ID = "";
+  var GA_ID = "G-VPF8CF0GRQ";
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = function () { window.dataLayer.push(arguments); };

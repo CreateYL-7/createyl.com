@@ -341,7 +341,7 @@ body.editing [contenteditable] { outline: 1px dashed var(--taupe); outline-offse
     if (!frame || !s.kind) return;
     if (s.kind === "youtube") {
       var origin = /^https?:/.test(location.protocol) ? "&origin=" + encodeURIComponent(location.origin) : "";
-      frame.innerHTML = '<iframe src="https://www.youtube.com/embed/' + s.id + '?autoplay=1&rel=0&playsinline=1' + origin + '" title="Client testimonial video" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+      frame.innerHTML = '<iframe src="https://www.youtube.com/embed/' + s.id + '?autoplay=1&rel=0&playsinline=1&enablejsapi=1' + origin + '" title="Client testimonial video" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
       var fig = frame.parentNode;
       if (!fig.querySelector(".fallback")) {
         var a = document.createElement("a");

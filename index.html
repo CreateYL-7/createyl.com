@@ -462,7 +462,7 @@ footer.site a:hover { color: var(--sand); }
     var m = document.createElement("div");
     m.className = "vmodal"; m.setAttribute("role", "dialog"); m.setAttribute("aria-modal", "true"); m.setAttribute("aria-label", "Client testimonial video");
     m.innerHTML = '<button class="vclose" type="button">Close ✕</button>' +
-      '<div class="vbox"><iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1' + origin + '" title="Client testimonial video" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>' +
+      '<div class="vbox"><iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1&enablejsapi=1' + origin + '" title="Client testimonial video" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>' +
       '<a class="fallback" href="https://www.youtube.com/watch?v=' + id + '" target="_blank" rel="noopener">Video not loading? Watch it on YouTube</a>';
     m.addEventListener("click", function (e) { if (e.target === m || e.target.closest(".vclose")) closeVideo(); });
     document.body.appendChild(m); document.body.style.overflow = "hidden";
@@ -476,7 +476,7 @@ footer.site a:hover { color: var(--sand); }
       var id = fig.dataset.yt;
       if (fig.dataset.vertical) { openVertical(id); return; }
       var origin = /^https?:/.test(location.protocol) ? "&origin=" + encodeURIComponent(location.origin) : "";
-      fig.querySelector(".frame").innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1' + origin + '" title="Client testimonial video" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+      fig.querySelector(".frame").innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1&enablejsapi=1' + origin + '" title="Client testimonial video" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
       var a = document.createElement("a");
       a.className = "fallback"; a.href = "https://www.youtube.com/watch?v=" + id; a.target = "_blank"; a.rel = "noopener";
       a.textContent = "Video not loading? Watch it on YouTube";
